@@ -35,13 +35,15 @@ def Goldbach(k):
             if is_primes(n):
                 print(m, n)
                 return True
-        print('No matched result.')
-        return False
+            if m >= k:
+                print('No matched result.')
+                return False
     else:
         print('Input error, not even number given.')
 
 if __name__ == '__main__':
+    Goldbach(12)
+    Goldbach(123)
     Goldbach(1234)
     Goldbach(123456)
     Goldbach(12345678)
-    Goldbach(123)
