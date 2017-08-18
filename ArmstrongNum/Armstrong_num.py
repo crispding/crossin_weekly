@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+
 def is_ArmstrongNumber(n):
 
     ori_num = n
@@ -19,26 +20,17 @@ def is_ArmstrongNumber(n):
     except TypeError as e:
         return '必须为整数类型。', e
 
-def closest_ASN(n):
 
-    n_small = n - 1
-    cls_asn = 0
-    while n_small > 0:
-        if is_ArmstrongNumber(n_small):
-            cls_asn = n_small
-            break
-        n_small -= 1
+def Near_Ams_Num(n):
+    forward, backward = n, n
+    while True:
+        if is_ArmstrongNumber(forward):
+            return forward
+        elif is_ArmstrongNumber(backward):
+            return backward
+        forward += 1
+        backward -= 1
 
-    n_large = n + 1
-    while n_large:
-        if cls_asn > 0 and n_large - n >= n - cls_asn:
-            break
-        if is_ArmstrongNumber(n_large):
-            cls_asn = n_large
-            break
-        n_large += 1
-
-    return cls_asn
 
 if __name__ == '__main__':
 
@@ -51,4 +43,4 @@ if __name__ == '__main__':
     print('1000以内的阿姆斯特朗数为：', ASN_List)
 
     num = int(input('请输入一个整数：'))
-    print('距离 %d 最近的阿姆斯特朗数：%d' %(num, closest_ASN(num)))
+    print('距离 %d 最近的阿姆斯特朗数：%d' % (num, Near_Ams_Num(num)))
