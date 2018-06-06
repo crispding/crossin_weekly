@@ -10,9 +10,9 @@ def resize_picture(name):
     global ratio
     w, h = img.size
     print('%s的原始尺寸为：%s×%s' % (name, w, h))
-    out_img = img.resize((int(w*ratio), int(h*ratio)))
-    out_name = name[:-4] + str(int(w*ratio)) + '×' + \
-        str(int(h*ratio)) + name[-4:]
+    out_img = img.resize((int(w * ratio), int(h * ratio)))
+    out_name = name[:-4] + str(int(w * ratio)) + '×' + \
+        str(int(h * ratio)) + name[-4:]
     print('输出的文件路径：', out_name)
     out_img.save(out_name, 'jpeg')
 
