@@ -100,3 +100,7 @@ ENV/
 
 .directory
 .vscode/
+
+# Not text
+.jpg
+.png
