@@ -102,5 +102,5 @@ ENV/
 .vscode/
 
 # Not text
-.jpg
-.png
+*.jpg
+*.png
