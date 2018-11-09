@@ -5,6 +5,7 @@ import os
 import qrcode
 import zxing
 from random import random
+import argparse
 
 
 def qr_encode(text):
@@ -18,21 +19,25 @@ def qr_encode(text):
 
 def qr_decode(file_name):
     reader = zxing.BarCodeReader()
-    msg = reader.decode(file_name).parsed
-    print(msg)
+    msg = reader.decode(file_name).raw
     print("{} 中包含信息：{}".format(file_name, msg))
 
 
 def act():
-    args = sys.argv
-    if len(args) != 3:
-        print("输入错误")
-    elif args[1] == 'encode':
-        input_text = args[2]
-        qr_encode(input_text)
-    elif args[1] == 'decode':
-        file_path = args[2]
-        qr_decode(file_path)
+    parser = argparse.ArgumentParser(description="生成或读取二维码")
+    parser.add_argument(
+        "operation",
+        choices=['encode', 'decode'],
+        help="请选择 ‘decode’ 或者 'encode'")
+    parser.add_argument("content")
+    args = parser.parse_args()
+    if args.operation == 'encode':
+        qr_encode(args.content)
+    else:
+        try:
+            qr_decode(args.content)
+        except IOError:
+            print("请输入正确的二维码")
 
 
 if __name__ == '__main__':
