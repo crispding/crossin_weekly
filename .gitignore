@@ -104,3 +104,5 @@ ENV/
 # Not text
 *.jpg
 *.png
+
+vocabulary_book/words.txt
