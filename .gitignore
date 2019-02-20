@@ -101,8 +101,9 @@ ENV/
 .directory
 .vscode/
 
-# Not text
+# Ignore
 *.jpg
 *.png
-
-vocabulary_book/words.txt
+*.txt
+*.ttf
+*.otf
